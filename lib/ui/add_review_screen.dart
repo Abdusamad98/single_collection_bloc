@@ -3,6 +3,7 @@ import 'package:single_collection_bloc/ui/pages/add_comment_page.dart';
 import 'package:single_collection_bloc/ui/pages/review_info_page.dart';
 import 'package:single_collection_bloc/ui/pages/select_image_page.dart';
 import 'package:single_collection_bloc/ui/pages/star_count_page.dart';
+import 'package:single_collection_bloc/widgets/phone_input_component.dart';
 
 class AddReviewScreen extends StatefulWidget {
   const AddReviewScreen({Key? key}) : super(key: key);
@@ -25,6 +26,9 @@ class _AddReviewScreenState extends State<AddReviewScreen> {
                 StarCountPage(),
                 SelectImagePage(),
                 ReviewInfoPage(),
+                PhoneInputComponent(onChanged: (v){
+                  print("+998"+v.removeWhitespace().removeTire());
+                }, initialValue: "")
               ],
             ),
           )
@@ -33,3 +37,16 @@ class _AddReviewScreenState extends State<AddReviewScreen> {
     );
   }
 }
+
+
+
+extension StringExtensions on String {
+  String removeWhitespace() {
+    return replaceAll(' ', '');
+  }
+
+  String removeTire() {
+    return replaceAll('-', '');
+  }
+}
+
